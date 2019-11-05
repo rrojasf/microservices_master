@@ -1,0 +1,9 @@
+[submodule "tasks-manager-app"]
+	path = tasks-manager-app
+	url = https://github.com/rrojasf/microservices_task_manager_webapp.git
+[submodule "user-api"]
+	path = user-api
+	url = https://github.com/rrojasf/microservices_todo_user_api.git
+[submodule "task-api"]
+	path = task-api
+	url = https://github.com/rrojasf/microservices_todo_task_api.git
