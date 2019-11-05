@@ -6,7 +6,7 @@ git clone https://github.com/rrojasf/microservices_master.git taskmanager_micros
 
 [INITIALIZE SUBMODULES]
 
-**alternate 1
+**alternate 1**
 
 cd taskmanager_microservices_project
 
@@ -14,7 +14,7 @@ git submodule init
 
 git submodule update
 
-**alternate 2 (CLONING RECURSIVE)
+**alternate 2 (CLONING RECURSIVE)**
 
 git clone --recursive https://github.com/rrojasf/microservices_master.git taskmanager_microservices_project
 
@@ -36,12 +36,18 @@ rename config.local.js  to config.js into tasks-manager-api directory (reactjs a
 docker-compose build
 docker-compose up
 
-[SERVERS]
+*[SERVERS]*
 
-REACTJS GUI APP: https://taskmanager-ms-app.herokuapp.com/
-USERS API: https://taskmgr-ms-user-api.herokuapp.com/api/users
-TASKS API: https://taskmgr-ms-task-api.herokuapp.com/api/tasks
+[REACTJS GUI APP]: (https://taskmanager-ms-app.herokuapp.com/)
+[USERS API]: (https://taskmgr-ms-user-api.herokuapp.com/api/users)
+[TASKS API]: (https://taskmgr-ms-task-api.herokuapp.com/api/tasks)
+
+-Local Servers at 
+[local-users-api] (http://localhost:81/api/users)
+[local-tasks-api] (http://localhost:82/api/tasks)
 
 [DATABASE]
+
+By default apis are working with a DBaas solution for easy use of data 
 
 MongoDB Atlas Instance
