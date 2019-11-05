@@ -1,0 +1,64 @@
+version: "3"
+
+volumes:
+  node_modules:
+
+services:
+  users_api:
+    container_name: service_users_api_local
+    restart: "no"
+    command: "npm run start"
+    build:
+      context: ./user-api
+      dockerfile: ./docker/dockerfile
+    environment:
+      - USE_DOCKER=yes
+    env_file:
+      - ./user-api/env/.env
+    volumes:
+      - ./user-api/app:/usr/src/app
+    ports:
+      - "81:3000"
+    links:
+      - taskmanager_mongo_local
+    depends_on:
+      - taskmanager_mongo_local
+
+  tasks_api:
+    container_name: service_tasks_api_local
+    restart: "no"
+    command: "npm run start"
+    build:
+      context: ./task-api
+      dockerfile: ./docker/dockerfile
+    environment:
+      - USE_DOCKER=yes
+    env_file:
+      - ./task-api/env/.env
+    volumes:
+      - ./task-api/app:/usr/src/app
+    ports:
+      - "82:3000"
+    links:
+      - taskmanager_mongo_local
+    depends_on:
+      - taskmanager_mongo_local
+
+  tasks-manager-app:
+    container_name: taskmanager_gui
+    command: "npm run start"
+    build:
+      context: ./tasks-manager-app
+      dockerfile: ./docker/dockerfile
+    ports:
+      - "3000:3000"
+
+  taskmanager_mongo_local:
+    image: mongo:4.0.10
+    container_name: taskmanager_mongo_local
+    ports:
+      - "27020:27017"
+    volumes:
+      - ./mongo_data:/data/db
+    environment:
+      - TZ=America/New_York
